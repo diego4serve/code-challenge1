@@ -19,7 +19,7 @@ const transformWord = (word) => {
 }
 
 const transformPhrase = (phrase) => {
-  const splitWithSeparators = phrase.split(/([^a-zA-Z])+/);
+  const splitWithSeparators = phrase.match(/([a-zA-Z]+|[^a-zA-Z]+)/g);
   return splitWithSeparators.map(item => item.match(/[^a-zA-Z]/) ? item : transformWord(item)).join('');
 }
 
@@ -28,3 +28,4 @@ console.log(transformPhrase("Space separated"));
 console.log(transformPhrase("Dash-separated"));
 console.log(transformPhrase("Number2separated"));
 console.log(transformPhrase("Smooth Space separated Dash-separated Number2separated"));
+console.log(transformPhrase("Smooth Space- separa--ted Dash-separated Number2separated"));
