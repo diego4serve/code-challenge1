@@ -12,15 +12,15 @@
 
 const transformWord = (word) => {
   if (word.length <= 2) return word;
-  const [fisrtChar, ...rest] = word;
+  const [firstChar, ...rest] = word;
   const lastChar = rest.pop();
   const numUniqueChars = new Set(rest).size;
-  return `${fisrtChar}${numUniqueChars}${lastChar}`;
+  return `${firstChar}${numUniqueChars}${lastChar}`;
 }
 
 const transformPhrase = (phrase) => {
   const splitWithSeparators = phrase.match(/([a-zA-Z]+|[^a-zA-Z]+)/g);
-  return splitWithSeparators.map(item => item.match(/[^a-zA-Z]/) ? item : transformWord(item)).join('');
+  return splitWithSeparators.map(item => item.search(/[^a-zA-Z]+/) !== -1 ? item : transformWord(item)).join('');
 }
 
 console.log(transformPhrase("Smooth"));
