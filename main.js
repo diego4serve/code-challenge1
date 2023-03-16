@@ -11,6 +11,7 @@
 
 
 const transformWord = (word) => {
+  if (word.length <= 2) return word;
   const [fisrtChar, ...rest] = word;
   const lastChar = rest.pop();
   const numUniqueChars = new Set(rest).size;
